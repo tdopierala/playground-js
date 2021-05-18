@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon" />
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./css/darkly.theme.min.css" />
+
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container" id="app">
+            <h1 class="alert alert-success text-center mt-3">Vue Sandbox</h1>
+
+            <div class="card border-primary mb-3">
+                <div class="card-header">Events and methods in Action</div>
+                <div class="card-body text-center">
+                    <div>
+                        <button v-on:click="counter++" class="btn btn-sm btn-success">
+                            Increment
+                        </button>
+                        <span>&nbsp;</span>
+                        <button v-on:click="counter--" class="btn btn-sm btn-danger">
+                            Decrement
+                        </button>
+                        <span>&nbsp;</span>
+                        <button v-on:click="add(4)" class="btn btn-sm btn-info">
+                            Add
+                        </button>
+                        <span>&nbsp;</span>
+                        <button v-on:click="reduce(4)" class="btn btn-sm btn-warning">
+                            Reduce
+                        </button>
+                    </div>
+
+                    <div class="alert alert-light mt-2">
+                        Result: {{ counter }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-success mb-3">
+                <div class="card-header">Native event object</div>
+                <div class="card-body text-center">
+                    
+                    <label for="name" class="form-label">Enter your name</label>
+                    <input type="text" class="form-control" v-on:input="setName" />
+                    
+                    <input type="text" class="form-control" v-on:input="setName($event, 'LastName')" />
+                    
+                    <p class="alert alert-light mt-2">Your name: <strong>{{ name }}</strong></p>
+                </div>
+            </div>
+
+            <div class="card border-danger mb-3">
+                <div class="card-header">Event modifiers</div>
+                <div class="card-body text-center">
+                    
+                    <form action="" class="row mb-2" v-on:submit.prevent="submitForm">
+                        <div class="d-grid gap-2">
+                            <label for="" class="form-label">Form input</label>
+                            <input type="text" class="form-control">
+                            <button class="btn btn-sm btn-info">Submit</button>
+                        </div>
+                    </form>
+
+                    <div class="row mb-2">
+                        <div class="d-grid gap-2">
+                            <button v-on:click.right="increment++" class="btn btn-sm btn-success">
+                                Increment me (only right click): {{ increment }}
+                            </button>
+                        <!-- </div>
+                        <div class="col-auto"> -->
+                            <button v-on:click.left="decrement--" class="btn btn-sm btn-danger">
+                                Decrement me (only left click): {{ decrement }}
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card border-warning mb-3">
+                <div class="card-header">Locking content with v-once</div>
+                <div class="card-body text-center">
+                    
+                    <div class="row mb-2">
+                        <div class="d-grid gap-2">
+                            <label for="" class="form-label">Submit on enter</label>
+                            <input type="text" class="form-conrtol" v-on:keyup.enter="enterName" v-bind:value="submitName">
+                            <p class="m-0">This value will change when you press enter: {{ submitName }}</p>
+                            <p class="m-0" v-once>This value will not change: {{ submitName }}</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="card border-light mb-3">
+                <div class="card-header">Two-Way data binding and computed properties</div>
+                <div class="card-body text-center">
+                    
+                    <div class="row mb-2">
+                        <div class="d-grid gap-2">
+                            <!-- <input type="text" class="form-conrtol" v-on:input="twoWayData" v-bind:value="twoWayData"> -->
+                            <input type="text" class="form-conrtol" v-model="twoWayData">
+                            <p class="m-0">Output text: {{ twoWayData }}</p>
+                            <p class="m-0">Method Output text: {{ outputData() }}</p> <!-- Method used to output data - not recomended -->
+                            <p class="m-0">Computed Output text: {{ computedData }}</p> <!-- Computed properties used to output data - recomended -->
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="card border-primary mb-3">
+                <div class="card-header">Watchers</div>
+                <div class="card-body text-center">
+                    
+                    <div class="row mb-2">
+                        <div class="col-auto">
+                            <input type="text" class="form-conrtol" v-model="firstname" placeholder="firstname">
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-conrtol" v-model="lastname" placeholder="lastname">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-auto">
+                            <p class="m-0">Your fullname: {{ fullname }}</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="card border-success mb-3">
+                <div class="card-header">Dynamic Styles</div>
+                <div class="card-body text-center">
+                    
+                    <div class="row">
+                        <div class="col-2">
+                            <button @click="toogleButtonBlink" class="btn btn-sm btn-success" :style="{color: buttonColor1 ? 'red' : 'white'}">blink</button>
+                        </div>
+                        <div class="col-2">
+                            <button @click="toogleButtonColor" class="btn btn-sm" :class="{'btn-danger': buttonColor2}">toogle</button>
+                        </div>
+                        <div class="col-2">
+                            <button @click="shuffleButtonStyle" :class="['btn', 'btn-sm', buttonStyle]">shuffle</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="./js/app.js"></script>
+    </body>
+</html>

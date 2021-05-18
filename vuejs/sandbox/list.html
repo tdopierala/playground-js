@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon" />
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/darkly.theme.min.css" />
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" id="app">
+        <h1 class="alert alert-primary text-center mt-3">Vue Sandbox</h1>
+
+        <div class="card border-primary mb-3">
+            <div class="card-header">Goals list</div>
+            <div class="card-body">
+                
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" v-model="goalValue">
+                    <button class="btn btn-primary" @click="addGoal">Add goal</button>
+                </div>
+
+                <p v-if="goals.length === 0">No goals have been added yet</p>
+                <ul v-else class="list-group text-center">
+                    <li v-for="(goal, index) in goals" @click="removeGoal(index)" :key="goal" class="list-group-item list-group-item-light">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text" id="basic-addon3" @click.stop>{{ goal }}</span>
+                            <input type="text" @click.stop class="form-control" aria-describedby="basic-addon3">
+                            <span class="input-group-text">X</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- <ul v-show="goals.length > 0" class="list-group mt-2">
+                    <li v-for="(goal, index) in goals" class="list-group-item list-group-item-light d-flex justify-content-between">
+                        {{ goal }}
+                        <span class="badge bg-primary">{{ index + 1 }}</span>
+                    </li>
+                </ul> -->
+                
+            </div>
+        </div>
+
+        <div class="card border-primary mb-3">
+            <div class="card-header">Loop through object</div>
+            <div class="card-body">
+
+                <ul class="list-group mb-3">
+                    <li v-for="(value, key, index) in person" class="list-group-item list-group-item-primary">[{{ index }}] {{ key }}: {{ value }}</li>
+                </ul>
+
+                <ul class="list-group mb-3">
+                    <li v-for="(value, key) in {name: 'Tom', age: 21, gender: 'male'}" class="list-group-item list-group-item-secondary"> {{ key }}: {{ value }}</li>
+                </ul>
+
+                <ul class="list-group mb-3">
+                    <li v-for="num in 10" class="list-group-item list-group-item-light">List number: {{ num }}</li>
+                </ul>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./js/list.js"></script>
+</body>
+</html>

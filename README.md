@@ -13,3 +13,8 @@
 * [WeatherJS](https://github.com/tdopierala/playground-js/tree/main/vanillajs/modernjs_weatherjs)
 * [GithubFinder](https://github.com/tdopierala/playground-js/tree/main/vanillajs/modernjs_githubfinder)
 * [Profile Scroller](https://github.com/tdopierala/playground-js/tree/main/vanillajs/modernjs_profilescroller)
+
+### Vue.js
+* [Vue Sanbox](https://github.com/tdopierala/playground-js/tree/main/vuejs/sandbox)
+* [Contact list](https://github.com/tdopierala/playground-js/tree/main/vuejs/contact-list)
+* [RememberMe](https://github.com/tdopierala/playground-js/tree/main/vuejs/remember-me)

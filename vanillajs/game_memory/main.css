@@ -1,0 +1,19 @@
+header {
+    text-align: center;
+}
+
+h2 { display: none; }
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 630px;
+    width: 840px;
+
+    margin: auto;
+}
+
+.grid img {
+    cursor: pointer;
+    margin: 5px;
+}

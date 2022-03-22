@@ -13,9 +13,9 @@
         <div class="btn-group" appDropdown>
             <button type="button" class="btn btn-primary dropdown-toggle"> Manage recipe <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                <li><a href="#" (click)="onAddToShoppingList()">To Shopping List</a></li>
+                <li><a href="#" (click)="onAddToShoppingList()" prevent-default>To Shopping List</a></li>
                 <li><a [routerLink]="['edit']">Edit Recipe</a></li>
-                <li><a href="#">Delete Recipe</a></li>
+                <li><a href="#" prevent-default>Delete Recipe</a></li>
             </ul>
         </div>
     </div>

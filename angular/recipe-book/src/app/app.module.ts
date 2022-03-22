@@ -15,10 +15,12 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { PreventDefaultDirective } from './shared/prevent-default.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    
     HeaderComponent,
     RecipesComponent,
     RecipeListComponent,
@@ -26,9 +28,11 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     ShoppingListComponent,
     ShoppingEditComponent,
     RecipeItemComponent,
-    DropdownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    
+    DropdownDirective,
+    PreventDefaultDirective,
   ],
   imports: [
     BrowserModule,

@@ -7,8 +7,8 @@
     "test": "vitest"
   },
   "keywords": [],
-  "author": "Maximilian Schwarzmüller",
-  "license": "ISC",
+  "author": "",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.17.3"
   },

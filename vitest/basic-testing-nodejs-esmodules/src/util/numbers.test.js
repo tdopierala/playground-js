@@ -57,9 +57,7 @@ describe('cleanNumbers() tests', () => {
 
 		const result = cleanNumbers(input);
 
-		expect(result[0]).toBeTypeOf('number');
-		expect(result[1]).toBeTypeOf('number');
-		expect(result[2]).toBeUndefined();
+		expect(result).toEqual([1,2]);
 	});
 
 

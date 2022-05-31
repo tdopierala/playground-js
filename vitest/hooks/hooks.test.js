@@ -14,7 +14,7 @@ beforeEach(() => {
 
 afterEach(() => {});
 
-afterAll(() => {})
+afterAll(() => {});
 
 it('should update the email', () => {
 	const newTestEmail = 'test2@test.com';
@@ -24,12 +24,10 @@ it('should update the email', () => {
 });
 
 it('should have an email property', () => {
-
 	expect(user).toHaveProperty('email');
 });
 
 it('should store the provided email value', () => {
-
 	expect(user.email).toBe(testEmail);
 });
 

@@ -3,7 +3,7 @@ import { add } from './math';
 
 it('should summarize all numbers values in an array', () => {
 	// arrange
-	const numbers = [1,2];
+	const numbers = [1, 2];
 
 	// act
 	const result = add(numbers);
@@ -13,7 +13,6 @@ it('should summarize all numbers values in an array', () => {
 	expect(result).toBe(expectedResults);
 });
 
-
 it('should yield NaN if a least one invalid number is provided', () => {
 	const inputs = ['invalid', 1];
 
@@ -21,7 +20,6 @@ it('should yield NaN if a least one invalid number is provided', () => {
 
 	expect(result).toBeNaN();
 });
- 
 
 it('should yield a correct sum if an array of numbers string values is provided', () => {
 	const inputs = ['1', '2'];
@@ -33,22 +31,19 @@ it('should yield a correct sum if an array of numbers string values is provided'
 	expect(result).toBe(expectedResults);
 });
 
-
 it('should yield 0 if an empty array is provided', () => {
-	const numbers  = [];
+	const numbers = [];
 
 	const result = add(numbers);
 
 	expect(result).toBe(0);
 });
 
-
 it('should throw an error if no value is passed into the function', () => {
 	const resultFn = () => add();
 
 	expect(resultFn).toThrow(/is not iterable/);
 });
-
 
 it('should throw an error if provided with multiple arguments insted of an array', () => {
 	const num1 = 1;

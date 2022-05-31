@@ -2,12 +2,10 @@ import { describe, expect, test } from 'vitest';
 import { generateToken, generateTokenPromise } from './async-example';
 
 describe('generateToken() tests', () => {
-
 	test('if it can generate a token', (done) => {
 		const email = 'testing@domain.com';
 
 		generateToken(email, (err, token) => {
-
 			try {
 				expect(token).toBeDefined();
 				done();
@@ -19,7 +17,6 @@ describe('generateToken() tests', () => {
 });
 
 describe('generateTokenPromise() tests', () => {
-
 	test('if it can generate a token', () => {
 		const email = 'testing@domain.com';
 

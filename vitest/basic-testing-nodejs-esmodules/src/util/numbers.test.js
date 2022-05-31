@@ -2,7 +2,6 @@ import { test, expect, describe } from 'vitest';
 import { cleanNumbers, transformToNumber } from './numbers.js';
 
 describe('transformToNumber() tests', () => {
-
 	test('if it can transform a string to a number', () => {
 		const input = '2';
 
@@ -24,11 +23,9 @@ describe('transformToNumber() tests', () => {
 		expect(result1).toBeNaN;
 		expect(result2).toBeNaN;
 	});
-
 });
 
 describe('cleanNumbers() tests', () => {
-
 	test('if it return an error when non iterable type od data is provided', () => {
 		const input1 = {};
 		const input2 = null;
@@ -49,7 +46,7 @@ describe('cleanNumbers() tests', () => {
 		const result = cleanNumbers(input);
 
 		expect(result).toBeTypeOf('object');
-		expect(result.length).toBe(input.length)
+		expect(result.length).toBe(input.length);
 	});
 
 	test('if it returns an array of numbers if an array of string numbers is provided', () => {
@@ -57,9 +54,8 @@ describe('cleanNumbers() tests', () => {
 
 		const result = cleanNumbers(input);
 
-		expect(result).toEqual([1,2]);
+		expect(result).toEqual([1, 2]);
 	});
-
 
 	test('if it throw an error if an array with al least on empty string is provided', () => {
 		const input = ['', 2];
@@ -68,5 +64,4 @@ describe('cleanNumbers() tests', () => {
 
 		expect(result).toThrow();
 	});
-
 });

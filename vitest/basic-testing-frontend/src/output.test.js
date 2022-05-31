@@ -1,8 +1,7 @@
-import { test, expect, describe } from "vitest";
-import { generateResultText } from "./output";
+import { test, expect, describe } from 'vitest';
+import { generateResultText } from './output';
 
 describe('generateResultText() tests', () => {
-
 	test('if it return a string, no mater what to be provided', () => {
 		const valNumber = 1;
 		const valString = 'invalid';
@@ -17,15 +16,13 @@ describe('generateResultText() tests', () => {
 		expect(result3).toBeTypeOf('string');
 	});
 
-
 	test('if result contain a provided number', () => {
 		const number = 10;
 
 		const result = generateResultText(number);
 
-		expect(result).toContain(number.toString())
+		expect(result).toContain(number.toString());
 	});
-
 
 	test('if it return an empty string if "no-calc" is provided', () => {
 		const input = 'no-calc';
@@ -34,7 +31,6 @@ describe('generateResultText() tests', () => {
 
 		expect(result).toBe('');
 	});
-
 
 	test('if it return a string with "Invalid" if invalid is provided', () => {
 		const input = 'invalid';

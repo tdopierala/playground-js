@@ -54,7 +54,6 @@ app.get('/', (req, res) => {
 });
 
 app.post('/calculate', (req, res) => {
-
 	const numberInputs = extractNumbers(req);
 	let result = calculateResult(numberInputs);
 

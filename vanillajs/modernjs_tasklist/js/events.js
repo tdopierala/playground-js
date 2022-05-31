@@ -2,14 +2,13 @@ console.clear();
 
 // * Mouse events
 
-let showType = e => console.log(`event type: ${e.type}`);
+let showType = (e) => console.log(`event type: ${e.type}`);
 
 const btnClear = document.querySelector('.clear-tasks');
-btnClear.addEventListener('click', e => {
-    e.preventDefault();
-    console.log('Tasks cleard');
+btnClear.addEventListener('click', (e) => {
+	e.preventDefault();
+	console.log('Tasks cleard');
 });
-
 
 document.querySelector('ul.collection li:nth-child(1)').addEventListener('click', showType);
 document.querySelector('ul.collection li:nth-child(2)').addEventListener('dblclick', showType);
@@ -25,8 +24,8 @@ document.querySelector('.card').addEventListener('mouseleave', showType);
 
 document.querySelector('.card').addEventListener('mousemove', showType);
  */
-document.querySelector('body').addEventListener('mousemove', e => {
-    document.querySelector('#task-title').textContent = `mx: ${e.offsetX} my: ${e.offsetY}`;
+document.querySelector('body').addEventListener('mousemove', (e) => {
+	document.querySelector('#task-title').textContent = `mx: ${e.offsetX} my: ${e.offsetY}`;
 });
 
 // * Input events and keyboard
@@ -34,16 +33,16 @@ document.querySelector('body').addEventListener('mousemove', e => {
 const form = document.querySelector('form');
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log(`event type: ${e.type}`);
+	e.preventDefault();
+	console.log(`event type: ${e.type}`);
 
-    //let input = document.getElementsByName('task');
-    let input = document.getElementById('task');
-    console.log(input.value);
+	//let input = document.getElementsByName('task');
+	let input = document.getElementById('task');
+	console.log(input.value);
 });
 
 const input = document.getElementById('task');
-const outputTask = (e) => document.querySelector('.output-task').textContent = e.target.value;
+const outputTask = (e) => (document.querySelector('.output-task').textContent = e.target.value);
 
 //input.addEventListener('keydown', outputTask);
 //input.addEventListener('keyup', outputTask);

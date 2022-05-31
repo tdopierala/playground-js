@@ -48,7 +48,7 @@ val = listItem.parentElement.parentElement;
 
 val = listItem.nextSibling; // next node
 val = listItem.nextElementSibling; // next element node
-val = listItem.nextElementSibling.nextElementSibling; 
+val = listItem.nextElementSibling.nextElementSibling;
 
 val = listItem.previousSibling; // previous node
 val = listItem.previousElementSibling; // previous element node

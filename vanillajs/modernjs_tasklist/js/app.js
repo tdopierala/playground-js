@@ -9,123 +9,117 @@ const storage = 'tasks';
 loadEventListners();
 
 function loadEventListners() {
+	document.addEventListener('DOMContentLoaded', () => {
+		let tasks = loadTaskFromStorage();
 
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        let tasks = loadTaskFromStorage();
+		tasks.forEach((task) => {
+			taskList.appendChild(createTaskItem(task));
+		});
+	});
 
-        tasks.forEach((task) => {
-            taskList.appendChild(createTaskItem(task));
-        });
-    });
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+		if (taskInput.value === '') {
+			alert('Add a task');
+		} else {
+			storeTaskInStorage(taskInput.value);
 
-        if(taskInput.value === '') {
-            alert('Add a task');
-        } else {
-            storeTaskInStorage(taskInput.value);
+			taskList.appendChild(createTaskItem(taskInput.value));
+			taskInput.value = '';
 
-            taskList.appendChild(createTaskItem(taskInput.value));
-            taskInput.value = '';
+			console.log('Add new task to list.');
+		}
+	});
 
-            console.log('Add new task to list.');
-        }
-    });
+	taskList.addEventListener('click', (e) => {
+		e.preventDefault();
 
-    taskList.addEventListener('click', (e) => {
-        e.preventDefault();
+		if (e.target.parentElement.classList.contains('delete-item')) {
+			if (confirm('Are You Sure?')) {
+				const item = e.target.parentElement.parentElement;
 
-        if(e.target.parentElement.classList.contains('delete-item')) {
-            if(confirm('Are You Sure?')) {
-                const item = e.target.parentElement.parentElement;
-                
-                removeTaskFromStorage(item);
-                item.remove();
+				removeTaskFromStorage(item);
+				item.remove();
 
-                console.log('One task removed.');
-            }
-        }
-    });
+				console.log('One task removed.');
+			}
+		}
+	});
 
-    clearBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+	clearBtn.addEventListener('click', (e) => {
+		e.preventDefault();
 
-        while(taskList.firstChild) {
-            removeTaskFromStorage(taskList.firstChild);
-            taskList.removeChild(taskList.firstChild);
-        }
+		while (taskList.firstChild) {
+			removeTaskFromStorage(taskList.firstChild);
+			taskList.removeChild(taskList.firstChild);
+		}
 
-        console.log('Removed all tasks.');
-    });
+		console.log('Removed all tasks.');
+	});
 
-    filter.addEventListener('keyup', (e) => {
-        const text = e.target.value.toLowerCase();
+	filter.addEventListener('keyup', (e) => {
+		const text = e.target.value.toLowerCase();
 
-        document.querySelectorAll('.collection-item').forEach(task => {
-            const item = task.firstChild.textContent;
+		document.querySelectorAll('.collection-item').forEach((task) => {
+			const item = task.firstChild.textContent;
 
-            if(item.toLowerCase().indexOf(text) != -1) {
-                task.style.display = 'block';
-            } else {
-                task.style.display = 'none';
-            }
-        });
-    });
+			if (item.toLowerCase().indexOf(text) != -1) {
+				task.style.display = 'block';
+			} else {
+				task.style.display = 'none';
+			}
+		});
+	});
 }
 
 function createTaskItem(task) {
+	const li = document.createElement('li');
+	li.className = 'collection-item';
+	li.appendChild(document.createTextNode(task));
 
-    const li = document.createElement('li');
-    li.className = 'collection-item';
-    li.appendChild(document.createTextNode(task));
+	const link = document.createElement('a');
+	link.className = 'delete-item secondary-content';
+	//link.innerHTML = '<i class="fa fa-remove"></i>';
 
-    const link = document.createElement('a');
-    link.className = 'delete-item secondary-content';
-    //link.innerHTML = '<i class="fa fa-remove"></i>';
+	const icon = document.createElement('i');
+	icon.className = 'fa fa-remove';
+	link.appendChild(icon);
 
-    const icon = document.createElement('i');
-    icon.className = 'fa fa-remove';
-    link.appendChild(icon);
-    
-    link.setAttribute('href', '');
+	link.setAttribute('href', '');
 
-    li.appendChild(link);
+	li.appendChild(link);
 
-    return li;
+	return li;
 }
 
 function loadTaskFromStorage() {
+	let tasks;
 
-    let tasks;
+	if (localStorage.getItem(storage) === null) {
+		tasks = [];
+	} else {
+		tasks = JSON.parse(localStorage.getItem(storage));
+	}
 
-    if(localStorage.getItem(storage) === null) {
-        tasks = [];
-    } else {
-        tasks = JSON.parse(localStorage.getItem(storage));
-    }
-
-    return tasks;
+	return tasks;
 }
 
 function storeTaskInStorage(task) {
-    
-    let tasks = loadTaskFromStorage();
-    tasks.push(task);
+	let tasks = loadTaskFromStorage();
+	tasks.push(task);
 
-    localStorage.setItem(storage, JSON.stringify(tasks));
+	localStorage.setItem(storage, JSON.stringify(tasks));
 }
 
 function removeTaskFromStorage(taskItem) {
+	let tasks = loadTaskFromStorage();
 
-    let tasks = loadTaskFromStorage();
+	tasks.forEach((task, index) => {
+		if (taskItem.textContent === task) {
+			tasks.splice(index, 1);
+		}
+	});
 
-    tasks.forEach((task, index) => {
-        if(taskItem.textContent === task) {
-            tasks.splice(index, 1);
-        }
-    });
-
-    localStorage.setItem(storage, JSON.stringify(tasks));
+	localStorage.setItem(storage, JSON.stringify(tasks));
 }

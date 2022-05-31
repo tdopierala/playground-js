@@ -55,12 +55,10 @@ console.log(firstLink.classList);
 const lastLink = document.querySelector('ul.collection li:last-child').children[0];
 val2 = lastLink;
 
-val2 =  lastLink.getAttribute('href');
-        lastLink.setAttribute('href', 'http://duckduckgo.com');
-val2 =  lastLink.hasAttribute('title');
-        lastLink.removeAttribute('href');
+val2 = lastLink.getAttribute('href');
+lastLink.setAttribute('href', 'http://duckduckgo.com');
+val2 = lastLink.hasAttribute('title');
+lastLink.removeAttribute('href');
 
 console.log(val2);
 console.log(lastLink);
-
-

@@ -2,24 +2,24 @@ const form = document.querySelector('form');
 const storage = 'tasks';
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const input = document.getElementById('task').value;
+	e.preventDefault();
 
-    let tasks;
+	const input = document.getElementById('task').value;
 
-    if(localStorage.getItem(storage) === null) {
-        tasks = [];
-    } else {
-        tasks = JSON.parse(localStorage.getItem(storage));
-    }
+	let tasks;
 
-    tasks.push(input);
+	if (localStorage.getItem(storage) === null) {
+		tasks = [];
+	} else {
+		tasks = JSON.parse(localStorage.getItem(storage));
+	}
 
-    localStorage.setItem(storage, JSON.stringify(tasks));
+	tasks.push(input);
 
-    console.log(input);
+	localStorage.setItem(storage, JSON.stringify(tasks));
+
+	console.log(input);
 });
 
 const tasks = JSON.parse(localStorage.getItem(storage));
-tasks.forEach(task => console.log(task));
+tasks.forEach((task) => console.log(task));
